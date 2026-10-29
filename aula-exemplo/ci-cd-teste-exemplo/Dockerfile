@@ -1,15 +1,4 @@
-FROM cypress/included:latest
-WORKDIR /e2e
-
-
-#COPIA OS ARQUIVOS ESSENCIAIS PARA O PROJETO
-COPY package.json .
-COPY package-lock.json .
-COPY cypress.config.js .
-COPY cypress/ ./cypress
-
-#INSTALA AS DEPENDENCIAS DO PROJETO
-RUN npm install
-
-#COMANDO PADRÃO PARA EXECUTAR OS TESTES
-CMD ["cypress", "run"]
+FROM alpine:3.21
+RUN apk update && apk add curl
+COPY mensagem.txt /mensagem.txt
+CMD ["sh", "-c", "echo 'Container iniciado com sucesso!'; cat /mensagem.txt"]
