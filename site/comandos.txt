@@ -1,0 +1,15 @@
+docker run -d \
+--name teste-volume \
+-p 8080:80 \
+-v $(pwd)/logs:/var/log/nginx \
+nginx
+
+
+docker run -d \
+--name volume-site \
+-p 8082:80 \
+-v $(pwd)/site:/usr/share/nginx/html \
+nginx
+
+
+docker build -t minha-primeira-imagem .
